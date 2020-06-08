@@ -25,4 +25,6 @@ sudo docker build --rm -t "amplibase" -f amplibase .
 `
 
 # Pulling image from Docker hub
-`docker pull abhijeetsingh1704/amplibase`
+`
+sudo docker pull abhijeetsingh1704/amplibase
+`
