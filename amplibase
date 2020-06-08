@@ -1,0 +1,52 @@
+## File: amplibase docker image
+## Version: 1.0
+## Sign: Abhi
+## Email: abhijeetsingh.aau@gmail.com
+## Last modified: fre  5 jun 2020 00:54:35 CEST
+
+
+FROM debian
+FROM r-base
+
+LABEL version="1.0" description="acetoscan" maintainer="Abhijeet Singh <abhijeetsingh.aau@gmail.com>"
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN \
+    apt-get clean \
+    && sed -i -e 's|http://archive|http://se.archive|g' /etc/apt/sources.list \
+    && apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install --yes build-essential \
+    && apt-get install python3-pip -y \
+    && pip3 install --upgrade pip \
+    && pip3 install --upgrade cutadapt \
+    && apt-get install -y --no-install-recommends \
+        bash \
+        tree \
+        wget \
+        pandoc \
+        python3-pip \
+        ncbi-blast+ \
+        bioperl \
+        mafft \
+        fasttree \
+        r-cran-tidyr \
+        r-bioc-phyloseq \
+        r-cran-plyr \
+        r-cran-rcolorbrewer \
+        r-cran-vegan \
+        r-cran-ggplot2 \
+        r-cran-dplyr \
+        r-cran-plotly
+
+
+#   Install additional software and do additional setup.
+
+RUN \
+    wget -O VSEARCH.tar.gz "https://github.com/torognes/vsearch/releases/download/v2.14.2/vsearch-2.14.2-linux-x86_64.tar.gz" \
+    && tar xzf VSEARCH.tar.gz \
+    && cp vsearch-2.14.2-linux-x86_64/bin/vsearch /usr/local/bin/vsearch \
+    && rm -rf vsearch-2.14.2-linux-x86_64/ VSEARCH.tar.gz \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /tmp/Rtmp*
