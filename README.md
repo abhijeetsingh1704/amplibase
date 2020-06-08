@@ -1,8 +1,6 @@
 # amplibase
 A docker image with tools installed for amplicon sequence analysis
 
-
-
 This docker image contains the basic tools for amplicon sequence analysis and visulazition
 
    - Cutadapt (1.15-1)
@@ -21,6 +19,10 @@ This docker image contains the basic tools for amplicon sequence analysis and vi
       * vegan (2.5.6)
 
 
+# Building amplibase image
+`
+sudo docker build --rm -t "amplibase" -f amplibase .
+`
 
-# Pull from Docker hub
+# Pulling image from Docker hub
 `docker pull abhijeetsingh1704/amplibase`
