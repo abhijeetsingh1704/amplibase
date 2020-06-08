@@ -9,7 +9,7 @@ This docker image contains the basic tools for amplicon sequence analysis and vi
    - Bioperl (1.7.2-2)
    - MAFFT (7.310-1)
    - Fasttree (2.1.10-1)
-   - R , with libraries: *
+   - R , with libraries:
       * phyloseq (1.32.0) 
       * ggplot2 (3.3.0) 
       * plotly (4.9.0) 
